@@ -227,6 +227,14 @@ public:
                                     : funcTy->getNumPackResults();
   }
 
+  unsigned getNumAutoDiffSemanticResults() const {
+    return funcTy->getNumAutoDiffSemanticResults();
+  }
+
+  unsigned getNumAutoDiffSemanticResultParameters() const {
+    return funcTy->getNumAutoDiffSemanticResultsParameters();
+  }
+
   /// Are any SIL results passed as address-typed arguments?
   bool hasIndirectSILResults() const { return getNumIndirectSILResults() != 0; }
 
