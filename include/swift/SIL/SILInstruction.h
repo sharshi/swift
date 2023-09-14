@@ -3086,11 +3086,12 @@ public:
 /// normally.
 class EndApplyInst
     : public UnaryInstructionBase<SILInstructionKind::EndApplyInst,
-                                  NonValueInstruction> {
+                                  SingleValueInstruction> {
   friend SILBuilder;
 
-  EndApplyInst(SILDebugLocation debugLoc, SILValue beginApplyToken)
-      : UnaryInstructionBase(debugLoc, beginApplyToken) {
+  EndApplyInst(SILDebugLocation debugLoc, SILValue beginApplyToken,
+               SILType Ty)
+    : UnaryInstructionBase(debugLoc, beginApplyToken, Ty) {
     assert(isaResultOf<BeginApplyInst>(beginApplyToken) &&
            isaResultOf<BeginApplyInst>(beginApplyToken)->isBeginApplyToken());
   }
